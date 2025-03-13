@@ -13,13 +13,12 @@ def create_tables():
     table_creation_queries = [
         sql.SQL("""
             CREATE TABLE IF NOT EXISTS users (
-            id SERIAL PRIMARY KEY,
-            name VARCHAR(100) NOT NULL,
-            phone_number VARCHAR(20) UNIQUE NOT NULL,
-            password TEXT NOT NULL,
-            is_admin BOOLEAN DEFAULT FALSE  -- Add this column
-        );
-
+                id SERIAL PRIMARY KEY,
+                name VARCHAR(100) NOT NULL,
+                phone_number VARCHAR(20) UNIQUE NOT NULL,
+                password TEXT NOT NULL,
+                is_admin BOOLEAN DEFAULT FALSE
+            );
         """),
         sql.SQL("""
             CREATE TABLE IF NOT EXISTS riders (
@@ -94,3 +93,4 @@ def seed_database(cursor, conn):
     except Exception as e:
         conn.rollback()
         print(f"❌ Error seeding database: {e}")
+
